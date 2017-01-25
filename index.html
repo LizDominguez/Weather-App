@@ -11,7 +11,7 @@
     
     <!-- Fonts -->
     
-   <link href="https://fonts.googleapis.com/css?family=Lato:300|Open+Sans|Open+Sans" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Lato:300|Open+Sans|Roboto" rel="stylesheet">
     
     
     <!-- Scripts -->
@@ -36,36 +36,42 @@
   
 <body>
   
-  
   <div class="box">
+    <div class="night-day"></div>
+    
     <div class="forecast">
       <div class="location">
-      Gainesville
+      
       </div>
-      <div>
-      <img src="icons/png/clouds-and-sun.png" class="icon"> 
-      <p class="temperature" style="margin-top: -30px;">83°</p> <p  class="condition" style="margin-top:-80px; margin-left: 160px;">Sunny</p>
-      </div>
+        <div class="icon">
+        </div>
+      <div class ="weather-info">
+      <table>
+        <tr>
+      <td rowspan="2" class="temperature">
+        </td>
+        <td class="conditions" id="units"></td>
+        </tr>
+        <tr>
+          <td class="conditions" id ="condition"></td>
+          </tr>
+      </table>
+        </div>
+        
 
     </div>
     <div class ="dayly">
-    <table>
+       <table>
       <tr>
-      <td id="day2">Monday</td>
-        <td> 80° </td>
-        <td> 85° </td>
+      <td>Humidity</td>
+        <td id="humidity"> </td>
       </tr>
       <tr>
-      <td id="day3">Tuesday</td>
-        <td> 82° </td>
-        <td> 88° </td>
-      </tr>
-      <tr>
-      <td id="day4">Wednesday</td>
-        <td> 86° </td>
-        <td> 90° </td>
+        <td>Wind</td>
+        <td id="wind"> </td>
       </tr>
       </table>
+
     </div>
   </div>
   
