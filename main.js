@@ -3,16 +3,12 @@
 
 var units = 'imperial';
 
-function main() {
-  getLocation();
-  callWeatherAPI();
-};
 
 var icons = [
-  'url("icons/png/sunny.png")',
-  'url("icons/png/clouds.png")',
-  'url("icons/png/wind.png")',
-  'url("icons/png/snowing.png")',
+  'url("desert.jpg")',
+  'url("forest.jpg")',
+  'url("mountain.png")',
+  'url("snow.jpg")',
   'url("icons/png/sunny.png")',
   'url("icons/png/moon-1.png")'
 ];
@@ -26,13 +22,15 @@ var coord = new Coordinates(0, 0);
 
 function getLocation() {
   var display = document.getElementById('weather');
+  
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
+  } 
+  
+  else {
     display.innerHTML = 'Geolocation is not supported by this browser.';
   }
 };
-
 
 function showPosition(position) {
   coord.latitude = position.coords.latitude;
@@ -40,8 +38,11 @@ function showPosition(position) {
   callWeatherAPI();
 };
 
+
 function getURL(lat, lon, units) {
+  
   var appid = '81f3bc7a8917428ab1dc5be1c6b758d6';
+  
   return 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat +
     '&lon=' +
     lon + '&units=' + units + '&appid=' + appid;
@@ -75,22 +76,30 @@ function getWeather(data) {
   $('#humidity').html(humidity + '%');
  
   
-  var tempArr = prepBackground(tempUnit);
-  setBackground(temp, tempArr);
+  setBackground(temp);
   dayOrNight(dt, sunset, sunrise);
 
 
 };
 
-function setBackground(temp, tempArr) {
-  if (temp >= tempArr[0]) {
-    $('.icon').css('background-image', icons[0]);
-  } else if (temp < tempArr[0] && temp >= tempArr[1]) {
-    $('.icon').css('background-image', icons[1]);
-  } else if (temp < tempArr[1] && temp >= tempArr[2]) {
-    $('.icon').css('background-image', icons[2]);
-  } else if (temp < tempArr[2]) {
-    $('.icon').css('background-image', icons[3]);
+function setBackground(temp) {
+  if (temp >= 90) {//hot
+    $('.forecast').css('background-image', icons[0]);
+    $('.night-day').css('top', '55px');
+    $('.night-day').css('left', '50px');
+  } else if (temp < 90 && temp >= 70) {//comfortable
+    $('.forecast').css('background-image', icons[1]);
+    $('.night-day').css('top', '150px');
+    $('.night-day').css('left', '200px');
+  } else if (temp < 70 && temp >= 30) {//chilly
+    $('.forecast').css('background-image', icons[2]);
+    $('.night-day').css('top', '55px');
+    $('.night-day').css('left', '50px');
+  } else if (temp < 30) {//cold
+    $('.forecast').css('background-image', icons[3]);
+    $('.night-day').css('top', '100px');
+    $('.night-day').css('left', '180px');
+    $('.forecast').css('text-shadow', '0px 2px 2px #6f56cf');
   }
 };
 
@@ -105,19 +114,11 @@ function dayOrNight(dt, sunset, sunrise) {
     
 }
 
-function prepBackground(tempUnit) {
-  var tempArr;
-  switch (tempUnit) {
-    case 'F':
-      tempArr = [90, 70, 32];
-      break;
-    case 'C':
-      tempArr = [32, 21, 0];
-      break;
-  }
-  return tempArr;
-};
 
-
-
-$(document).ready(main);
+$(document).ready(function() {
+  
+    getLocation();
+    callWeatherAPI();
+  
+  
+});

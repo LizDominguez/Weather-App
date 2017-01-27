@@ -17,8 +17,7 @@ html, body {
 }
 
 .forecast {
-  background-color: #ad2044;
-  background-image: url('landscape_mountain_forest_1980.png');
+  background-color: #ffffff;
   background-size: cover;
   color: white;
   text-align: center;
@@ -29,8 +28,6 @@ html, body {
 
 .night-day {
   position:absolute;
-  top: 55px;
-  left: 50px;
   height: 50px;
   width: 50px;
   background-size: cover;
@@ -50,7 +47,7 @@ html, body {
   left: 113px;
   top:15px;
   background-size: cover;
-  opacity: 0.5;
+  opacity: 0;
 }
 
 .weather-info {

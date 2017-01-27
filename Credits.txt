@@ -1,3 +1,6 @@
 
 Weather Icons
 Designed by Freepik and distributed by Flaticon
+
+API setup 
+https://github.com/Rafase282/My-FreeCodeCamp-Code/wiki/Zipline-Show-the-Local-Weather
